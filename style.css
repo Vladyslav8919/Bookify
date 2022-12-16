@@ -6,6 +6,8 @@
   --clr-primary-5: #748ffc;
   --clr-primary-6: #5c7cfa;
   --clr-primary-7: #4c6ef5;
+  --clr-primary-8: #3b5bdb;
+  --clr-primary-9: #364fc7;
   /* darkest grey - used for headings */
   --clr-grey-1: hsl(209, 61%, 16%);
   --clr-grey-2: hsl(211, 39%, 23%);
@@ -53,9 +55,9 @@ a {
   text-decoration: none;
 }
 
-img:not(.logo) {
+/* img:not(.logo) {
   width: 100%;
-}
+} */
 img {
   display: block;
 }
@@ -404,9 +406,9 @@ Assortment
 /* .assortment {
 } */
 
-.title {
+.assortment .title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 } /*????*/
 
 /* .assortment .btn {
@@ -470,14 +472,26 @@ Assortment
 .photo {
   object-fit: cover;
   height: 200px;
-  border: 0.25rem solid var(--clr-primary-2);
-  border-radius: var(--radius);
+  border: 0.35rem solid var(--clr-white);
+  border-radius: 0.4rem;
 }
 .item-info header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 0.5px dotted var(--clr-grey-5);
+  /* border-bottom: 0.5px solid var(--clr-grey-5); */
+  border: none;
+  /* border-bottom: 1px solid var(--clr-grey-9); */
 }
+
+.item-info a {
+  color: var(--clr-grey-2);
+  cursor: pointer;
+}
+
+.item-info a:hover {
+  color: var(--clr-primary-9);
+}
+
 .item-info h4 {
   margin-bottom: 0.5rem;
 }
@@ -490,10 +504,14 @@ Assortment
 }
 
 @media screen and (min-width: 768px) {
-  .menu-item {
-    grid-template-columns: 225px 1fr;
+  /* .assortment-item {
+    grid-template-columns: 1fr 1fr;
     gap: 0 1.25rem;
     max-width: 40rem;
+  } */
+  .section-center {
+    /* width: 95vw; */
+    grid-template-columns: repeat(3, 1fr);
   }
   .photo {
     height: 175px;
@@ -502,10 +520,10 @@ Assortment
 @media screen and (min-width: 1200px) {
   .section-center {
     width: 95vw;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
   }
   .photo {
-    height: 150px;
+    height: 175px;
   }
 }
 
@@ -528,7 +546,7 @@ Questions
   background: var(--clr-white);
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
-  padding: 1rem 1.5rem 0 1.5rem;
+  padding: 1rem 2rem 0 2rem;
   margin-bottom: 2rem;
 }
 .question-title {

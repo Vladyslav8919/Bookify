@@ -33,8 +33,29 @@ btnCloseSidebar.addEventListener("click", function () {
 ASSORTMENT
 -----------
 */
+let assortment;
 
-const assortment = [
+const getData = async function () {
+  try {
+    const response = await fetch(
+      "https://www.googleapis.com/books/v1/volumes?q=christmas"
+    );
+    const data = await response.json();
+    const { items } = data;
+    console.log(data);
+    console.log(items);
+    assortment = items;
+    console.log(assortment);
+    displayAssortmentItems(assortment);
+
+    // displayAssortmentBtns();
+  } catch (err) {
+    console.log(err);
+  }
+};
+getData();
+
+const assortment2 = [
   {
     id: 1,
     title: "buttermilk pancakes",
@@ -114,26 +135,22 @@ const btnContainerAssortment = document.querySelector(
   ".btn-container--assortment"
 );
 
-window.addEventListener("DOMContentLoaded", function () {
-  displayAssortmentItems(assortment);
+// window.addEventListener("DOMContentLoaded", function () {
+//   displayAssortmentItems(assortment);
 
-  displayAssortmentBtns();
-});
+//   displayAssortmentBtns();
+// });
 
 const displayAssortmentItems = function (assortment) {
   const displayItems = assortment
     .map(function (item) {
       return `
-      <article class="menu-item">
-          <img class="photo" src="${item.img}" alt="${item.title}" />
+      <article class="assortment-item">
+          <img class="photo" src="${item.volumeInfo.imageLinks.thumbnail}" alt="${item.volumeInfo.title}" />
           <div class="item-info">
             <header>
-              <h4>${item.title}</h4>
-              <h4 class="price">${item.price}</h4>
+              <h4><a href="${item.volumeInfo.canonicalVolumeLink}" referrer="no-referrer" target="_blank">${item.volumeInfo.title}</a></h4>
             </header>
-            <p class="item-text">
-              ${item.desc}
-            </p>
           </div>
         </article>
   `;
@@ -141,6 +158,8 @@ const displayAssortmentItems = function (assortment) {
     .join("");
   sectionAssortment.innerHTML = displayItems;
 };
+/* <p class="item-text">${item.volumeInfo.description}</p>; */
+/* <h4 class="price">${item.volumeInfo.pageCount}</h4>; */
 
 const displayAssortmentBtns = function () {
   const categories = [...new Set(assortment.map((item) => item.category))];
