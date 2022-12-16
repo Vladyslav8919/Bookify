@@ -408,7 +408,7 @@ Assortment
 
 .assortment .title {
   text-align: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 3rem; */
 } /*????*/
 
 /* .assortment .btn {
@@ -467,13 +467,14 @@ Assortment
   display: grid;
   gap: 1rem 2rem;
   max-width: 25rem;
+  justify-items: center;
 }
 
 .photo {
   object-fit: cover;
   height: 200px;
-  border: 0.35rem solid var(--clr-white);
-  border-radius: 0.4rem;
+  border: 0.45rem solid var(--clr-white);
+  border-radius: 0.7rem;
 }
 .item-info header {
   display: flex;
@@ -483,6 +484,10 @@ Assortment
   /* border-bottom: 1px solid var(--clr-grey-9); */
 }
 
+.item-info h4 {
+  text-align: center;
+  line-height: 1.3rem;
+}
 .item-info a {
   color: var(--clr-grey-2);
   cursor: pointer;
@@ -801,4 +806,41 @@ Reviews
 .next-btn:hover {
   background-color: transparent;
   color: var(--clr-primary-4);
+}
+
+/* Spinner */
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--clr-primary-3);
+
+  position: fixed;
+  top: 43%;
+  left: 45.5%;
+  /* transform: translate(-50%, -50%); */
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+  animation: sk-scaleout 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+  }
 }

@@ -33,9 +33,12 @@ btnCloseSidebar.addEventListener("click", function () {
 ASSORTMENT
 -----------
 */
+const spinner = document.querySelector(".spinner");
+
 let assortment;
 
 const getData = async function () {
+  spinner.classList.remove("hidden");
   try {
     const response = await fetch(
       "https://www.googleapis.com/books/v1/volumes?q=christmas"
@@ -52,6 +55,7 @@ const getData = async function () {
   } catch (err) {
     console.log(err);
   }
+  spinner.classList.add("hidden");
 };
 getData();
 
