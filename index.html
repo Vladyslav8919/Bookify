@@ -27,16 +27,6 @@
 
         <button class="sidebar-toggle">Book categories▾</button>
 
-        <ul class="links nav-links">
-          <li><a href="">Offers & Deals</a></li>
-          <li><a href="">Bestsellers</a></li>
-          <li><a href="">New Releases</a></li>
-          <!-- <li><a href="">Gifts</a></li> -->
-          <!-- <li><a href="">Bargain Bin</a></li> -->
-          <li><a href="">Cart</a></li>
-          <li><a href="">Log In</a></li>
-        </ul>
-
         <form>
           <input
             class="nav-search--input"
@@ -47,6 +37,16 @@
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
         </form>
+
+        <ul class="links nav-links">
+          <li><a href="">Offers</a></li>
+          <li><a href="">Bestsellers</a></li>
+          <li><a href="">Releases</a></li>
+          <!-- <li><a href="">Gifts</a></li> -->
+          <!-- <li><a href="">Bargain Bin</a></li> -->
+          <li><a href="">Cart</a></li>
+          <li><a id="log-in" href="">Log In</a></li>
+        </ul>
 
         <button class="nav-toggle">
           <i class="fas fa-bars"></i>
@@ -77,7 +77,7 @@
       <div class="sidebar-header">
         <img class="logo" src="img/logo.svg" alt="Bookify logo" />
         <h2>Categories</h2>
-        <button class="close-btn">✕</button>
+        <button class="close-btn close-sidebar">✕</button>
       </div>
 
       <ul class="links">
@@ -117,6 +117,177 @@
     </aside>
 
     <main>
+      <!-- book assortment -->
+      <section class="assortment">
+        <!-- title -->
+        <div class="title">
+          <h2>Our assortment</h2>
+          <div class="underline"></div>
+        </div>
+
+        <!-- filter buttons -->
+        <div class="btn-container btn-container--assortment"></div>
+
+        <!-- assortment items -->
+        <div class="section-center section--assortment">
+          <!-- single item -->
+          <!-- <article class="menu-item">
+          <img class="photo" src="menu-item.jpeg" alt="menu item" />
+          <div class="item-info">
+            <header>
+              <h4>Buttermilk pancakes</h4>
+              <h4 class="price">$15</h4>
+            </header>
+            <p class="item-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              voluptas? Blanditiis, placeat est! Ullam harum sequi odit
+              perferendis, nam est.
+            </p>
+          </div>
+          </article> -->
+          <!-- end of single item -->
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- questions -->
+      <section class="questions">
+        <!-- title -->
+        <div class="title">
+          <h2>General questions</h2>
+          <div class="underline"></div>
+        </div>
+
+        <!-- questions -->
+        <div class="section-center">
+          <!-- single question -->
+          <article class="question">
+            <!-- question-title -->
+            <div class="question-title">
+              <p>What is Bookify?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">+</span>
+                <span class="minus-icon">-</span>
+              </button>
+            </div>
+            <!-- question-text -->
+            <div class="question-text">
+              <p>
+                Bookify is an online bookstore with a mission to financially
+                support local, independent bookstores.
+              </p>
+              <p>
+                We believe that bookstores are essential to a healthy culture.
+                They’re where authors can connect with readers, where we
+                discover new writers, where children get hooked on the thrill of
+                reading that can last a lifetime. They’re also anchors for our
+                downtowns and communities.
+              </p>
+              <p>
+                As more and more people buy their books online, we wanted to
+                create an easy, convenient way for you to get your books and
+                support bookstores at the same time.
+              </p>
+            </div>
+          </article>
+          <!-- end question -->
+
+          <!-- single question -->
+          <article class="question">
+            <!-- question-title -->
+            <div class="question-title">
+              <p>Is Bookify a physical bookstore?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">+</span>
+                <span class="minus-icon">-</span>
+              </button>
+            </div>
+            <!-- question-text -->
+            <div class="question-text">
+              <p>
+                Bookify.org itself is not a physical store and does not
+                purchase, print, publish, or warehouse books. Bookshop.org acts
+                as a purveyor of new books (distributed solely through Ingram)
+                by linking online shoppers with their favorite local vendors in
+                order to traffic book profits toward indie booksellers with
+                their preservation in mind.
+              </p>
+              <p>
+                If you have a specific book store you would like to support, we
+                recommend using our Bookstore Finder to find their
+                affiliate/book store page on our website. If you order through
+                the site using their specific portal, all proceeds will go
+                straight to their store instead of the general pool that is
+                split up evenly among all Bookify registered bookstores.
+              </p>
+              <p>
+                Since Bookify is not a physical bookstore, Bookify cannot
+                feature in-store / curbside pickup options. If you are looking
+                for in-store or curbside pickup options we suggest you get in
+                touch with your local bookstore directly to inquire if they have
+                those ordering options available.
+              </p>
+            </div>
+          </article>
+          <!-- end question -->
+
+          <!-- single question -->
+          <article class="question">
+            <!-- question-title -->
+            <div class="question-title">
+              <p>Does Bookify share customer info with affiliates?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">+</span>
+                <span class="minus-icon">-</span>
+              </button>
+            </div>
+            <!-- question-text -->
+            <div class="question-text">
+              <p>
+                We do not share our customer data with third parties. If
+                customer orders from a bookstore’s shop page, the bookstore will
+                be able to see the customer information, as Bookify considers
+                those customers to be the bookstore’s customers. The bookstores
+                have access to their customers and order information for their
+                own sales.
+              </p>
+              <p>
+                Customer information is not made available for any other
+                affiliate or partner of Bookify.
+              </p>
+            </div>
+          </article>
+          <!-- end question -->
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <section class="container modal hidden">
+        <h3 class="heading--log-in">Log in</h3>
+        <button class="close-btn close-modal">✕</button>
+        <form class="modal-form">
+          <input type="email" name="" placeholder="Your Email" />
+          <input type="password" name="" placeholder="Password" />
+
+          <div class="signed-in">
+            <a class="forgot-password" href="">Forgot Password?</a>
+            <input type="checkbox" name="" id="keep-signed" />
+            <label for="keep-signed">Keep me logged in</label>
+          </div>
+          <!-- <br /> -->
+          <button class="btn btn--log-in">Log in</button>
+          <hr />
+          <button class="btn btn--create-acc">Create Account</button>
+          <p>
+            If you're a library, bookstore or book drive partner, please sign in
+            to the <a href="">Client Portal</a>.
+          </p>
+        </form>
+      </section>
+
+      <hr />
+
       <!-- Reviews -->
       <section class="container">
         <!-- title -->
@@ -136,17 +307,15 @@
 
           <!-- prev next buttons -->
           <div class="button-container">
-            <button class="prev-btn">
-              <i class="fas fa-chevron-left"></i>
-            </button>
+            <button class="btn prev-btn">⩤</button>
             <!-- random button -->
-            <button class="random-btn">Surprise me</button>
-            <button class="next-btn">
-              <i class="fas fa-chevron-right"></i>
-            </button>
+            <button class="btn random-btn">Surprise me</button>
+            <button class="btn next-btn">⩥</button>
           </div>
         </article>
       </section>
+
+      <div class="overlay hidden"></div>
     </main>
   </body>
 </html>
