@@ -21,7 +21,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="nav-center">
+    <nav id="nav" class="nav-center">
       <div class="nav-header">
         <img class="logo" src="img/logo.svg" alt="Bookify logo" />
 
@@ -38,38 +38,38 @@
           </button>
         </form>
 
+        <button class="nav-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="links-container">
         <ul class="links nav-links">
-          <li><a href="">Offers</a></li>
-          <li><a href="">Bestsellers</a></li>
-          <li><a href="">Releases</a></li>
+          <li><a class="scroll-link" href="#bestsellers">Bestsellers</a></li>
+          <li><a class="scroll-link" href="#questions">Questions</a></li>
+          <li><a class="scroll-link" href="#reviews">Reviews</a></li>
           <!-- <li><a href="">Gifts</a></li> -->
           <!-- <li><a href="">Bargain Bin</a></li> -->
           <li><a href="">Cart</a></li>
           <li><a id="log-in" href="">Log In</a></li>
         </ul>
-
-        <button class="nav-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <ul class="social-icons">
-          <li>
-            <a href=""><i class="fab fa-facebook"></i></a>
-          </li>
-          <li>
-            <a href=""><i class="fab fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href=""><i class="fab fa-behance"></i></a>
-          </li>
-          <li>
-            <a href=""><i class="fab fa-linkedin"></i></a>
-          </li>
-          <li>
-            <a href=""><i class="fab fa-sketch"></i></a>
-          </li>
-        </ul>
       </div>
+      <ul class="social-icons">
+        <li>
+          <a href=""><i class="fab fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-behance"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-linkedin"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-sketch"></i></a>
+        </li>
+      </ul>
     </nav>
 
     <!-- Sidebar -->
@@ -118,7 +118,7 @@
 
     <main>
       <!-- book assortment -->
-      <section class="assortment">
+      <section id="bestsellers" class="assortment">
         <!-- title -->
         <div class="title">
           <h2>Christmas bestsellers</h2>
@@ -151,9 +151,8 @@
       </section>
 
       <hr />
-
       <!-- questions -->
-      <section class="questions">
+      <section id="questions">
         <!-- title -->
         <div class="title">
           <h2>General questions</h2>
@@ -286,11 +285,9 @@
           </p>
         </form>
       </section>
-
       <hr />
-
       <!-- Reviews -->
-      <section class="container">
+      <section id="reviews" class="container">
         <!-- title -->
         <div class="title">
           <h2 class="heading--reviews">Our Reviews</h2>
@@ -318,5 +315,20 @@
 
       <div class="overlay hidden"></div>
     </main>
+
+    <!-- back to top button -->
+    <a href="#bestsellers" class="scroll-link top-link">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer class="section section--footer">
+      <div class="section-center">
+        <p>
+          &copy; <span id="date"></span> Copyright Bookify
+          <span>by Vladyslav Pshevlotskyi</span>
+        </p>
+        <p>All Rights Reserved</p>
+      </div>
+    </footer>
   </body>
 </html>

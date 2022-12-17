@@ -4,11 +4,87 @@ NAVBAR
 ----------------
 */
 const btnToggleNav = document.querySelector(".nav-toggle");
+const navLinksContainer = document.querySelector(".links-container");
 const navLinks = document.querySelector(".nav-links");
 
 btnToggleNav.addEventListener("click", function () {
-  console.log(navLinks.classList);
-  navLinks.classList.toggle("show-links");
+  const navLinksHeight = navLinks.getBoundingClientRect().height;
+  const navLinksContainerHeight =
+    navLinksContainer.getBoundingClientRect().height;
+
+  if (navLinksContainerHeight === 0) {
+    navLinksContainer.style.height = `${navLinksHeight}px`;
+  } else {
+    navLinksContainer.style.height = 0;
+  }
+});
+
+// const navLinks = document.querySelector(".nav-links");
+
+// btnToggleNav.addEventListener("click", function () {
+//   console.log(navLinks.classList);
+//   navLinks.classList.toggle("show-links");
+// });
+
+/* Fixed navbar */
+const navbar = document.getElementById("nav");
+const topLink = document.querySelector(".top-link");
+
+const newSection = document.getElementById("bestsellers");
+// const sectionCoords = Math.abs(newSection.offsetTop + newSection.offsetHeight);
+const sectionCoords = Math.abs(newSection.offsetTop + newSection.offsetHeight);
+
+window.addEventListener("scroll", function () {
+  const scrollHeight = window.pageYOffset;
+
+  if (scrollHeight > sectionCoords) {
+    navbar.classList.add("fixed-nav");
+  } else {
+    navbar.classList.remove("fixed-nav");
+  }
+
+  if (scrollHeight > sectionCoords) {
+    topLink.classList.add("show--top-link");
+  } else {
+    topLink.classList.remove("show--top-link");
+  }
+});
+
+/*
+-----------
+SMOOTH SCROLL
+-----------
+*/
+const scrollLinks = document.querySelectorAll(".scroll-link");
+
+scrollLinks.forEach(function (link) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const id = e.currentTarget.getAttribute("href").slice(1);
+
+    const element = document.getElementById(id);
+
+    // calculate the heights
+    const navHeight = navbar.getBoundingClientRect().height;
+    const containerHeight = navLinksContainer.getBoundingClientRect().height;
+    const fixedNav = navbar.classList.contains("fixed-nav");
+
+    let position = element.offsetTop;
+
+    position = position - navHeight;
+
+    if (!fixedNav) {
+      position = position - navHeight;
+    }
+
+    if (navHeight > 76) {
+      position = position + containerHeight;
+    }
+
+    window.scrollTo({ left: 0, top: position });
+    navLinksContainer.style.height = 0;
+  });
 });
 
 /*
@@ -45,10 +121,10 @@ const getData = async function () {
     );
     const data = await response.json();
     const { items } = data;
-    console.log(data);
-    console.log(items);
+    // console.log(data);
+    // console.log(items);
     assortment = items;
-    console.log(assortment);
+    // console.log(assortment);
     displayAssortmentItems(assortment);
 
     // displayAssortmentBtns();
@@ -58,81 +134,6 @@ const getData = async function () {
   spinner.classList.add("hidden");
 };
 getData();
-
-const assortment2 = [
-  {
-    id: 1,
-    title: "buttermilk pancakes",
-    category: "breakfast",
-    price: 15.99,
-    img: "./images/item-1.jpeg",
-    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
-  },
-  {
-    id: 2,
-    title: "diner double",
-    category: "lunch",
-    price: 13.99,
-    img: "./images/item-2.jpeg",
-    desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
-  },
-  {
-    id: 3,
-    title: "godzilla milkshake",
-    category: "shakes",
-    price: 6.99,
-    img: "./images/item-3.jpeg",
-    desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
-  },
-  {
-    id: 4,
-    title: "country delight",
-    category: "breakfast",
-    price: 20.99,
-    img: "./images/item-4.jpeg",
-    desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
-  },
-  {
-    id: 5,
-    title: "egg attack",
-    category: "lunch",
-    price: 22.99,
-    img: "./images/item-5.jpeg",
-    desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
-  },
-  {
-    id: 6,
-    title: "oreo dream",
-    category: "shakes",
-    price: 18.99,
-    img: "./images/item-6.jpeg",
-    desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
-  },
-  {
-    id: 7,
-    title: "bacon overflow",
-    category: "breakfast",
-    price: 8.99,
-    img: "./images/item-7.jpeg",
-    desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
-  },
-  {
-    id: 8,
-    title: "american classic",
-    category: "lunch",
-    price: 12.99,
-    img: "./images/item-8.jpeg",
-    desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
-  },
-  {
-    id: 9,
-    title: "quarantine buddy",
-    category: "shakes",
-    price: 16.99,
-    img: "./images/item-9.jpeg",
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-  },
-];
 
 const sectionAssortment = document.querySelector(".section--assortment");
 const btnContainerAssortment = document.querySelector(
@@ -307,7 +308,7 @@ btnContainer.addEventListener("click", function (e) {
   const btn = e.target.closest(".btn");
 
   if (!btn) return;
-  console.log(btn);
+  // console.log(btn);
 
   if (btn.classList.contains("prev-btn")) {
     currentReview--;
@@ -367,3 +368,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //   showReview(reviews[randomReview]);
 // });
+
+/*
+-----------
+FOOTER
+-----------
+*/
+const date = document.getElementById("date");
+
+date.textContent = new Date().getFullYear();
