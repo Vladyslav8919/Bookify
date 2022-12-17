@@ -202,6 +202,32 @@ const displayAssortmentBtns = function () {
 };
 
 /*
+--------------------------------
+GIFT *TAB COMPONENT*
+--------------------------------
+*/
+const giftArticle = document.querySelector(".about");
+const giftBtns = document.querySelectorAll(".tab-btn");
+const giftContents = document.querySelectorAll(".content");
+
+giftArticle.addEventListener("click", function (e) {
+  const id = e.target.dataset.id;
+
+  if (id) {
+    giftBtns.forEach(function (btn) {
+      btn.classList.remove("active");
+      e.target.classList.add("active");
+    });
+
+    giftContents.forEach(function (content) {
+      content.classList.remove("active");
+      const element = document.getElementById(id);
+      element.classList.add("active");
+    });
+  }
+});
+
+/*
 -----------
 QUESTIONS
 -----------

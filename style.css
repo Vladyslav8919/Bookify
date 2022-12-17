@@ -141,7 +141,7 @@ hr {
 }
 
 /* Section */
-section {
+section:not(.modal) {
   margin-bottom: 3rem;
   min-height: 100vh;
 }
@@ -227,6 +227,10 @@ nav {
   color: var(--clr-grey-3);
 }
 
+.nav-links {
+  text-align: center;
+}
+
 nav .links a {
   color: var(--clr-grey-2);
   font-size: 1rem;
@@ -238,7 +242,7 @@ nav .links a {
 }
 nav .links a:hover {
   background: var(--clr-primary-1);
-  border-radius: var(--radius);
+  /* border-radius: var(--radius); */
   color: var(--clr-grey-3);
   /* padding-left: 1.5rem; */
 }
@@ -489,11 +493,11 @@ Assortment
   background: var(--clr-black);
 } */
 
-.btn-container {
+/* .btn-container {
   margin-bottom: 4rem;
   display: flex;
   justify-content: center;
-}
+} */
 .filter-btn {
   background: var(--clr-primary-2);
   /* border-color: var(--clr-white); */
@@ -902,6 +906,87 @@ Reviews
     transform: scale(1);
     opacity: 0;
   }
+}
+
+/*
+-------------
+Gift Certificates
+-------------
+*/
+.about {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.btn-container--gift {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.tab-btn:nth-child(1) {
+  border-top-left-radius: var(--radius);
+}
+.tab-btn:nth-child(3) {
+  border-top-right-radius: var(--radius);
+}
+.tab-btn {
+  padding: 1rem 0;
+  /* margin: 0 -1px; */
+  border: none;
+  text-transform: capitalize;
+  font-size: 1rem;
+  display: block;
+  color: var(--clr-grey-4);
+  background: var(--clr-primary-1);
+  cursor: pointer;
+  transition: var(--transition);
+  /* letter-spacing: var(--spacing); */
+  box-shadow: inset 0 0 0 1px #fff;
+}
+.tab-btn:hover:not(.active) {
+  background: var(--clr-primary-2);
+  /* color: var(--clr-primary-9); */
+}
+.about-content {
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  margin: 0 0;
+}
+/* hide content */
+.content {
+  display: none;
+}
+.tab-btn.active {
+  background: var(--clr-white);
+}
+.content.active {
+  display: block;
+}
+
+/* #gifts .title {
+  margin-top: 12vh;
+} */
+
+#bookId {
+  background-color: var(--clr-primary-1);
+  border-radius: 10rem;
+  border: none;
+  padding: 0.55rem;
+  text-align: center;
+  /* display: block; */
+  margin: 0 0.2rem 0 0.5rem;
+
+  text-align: center;
+  width: 10rem;
+}
+
+.buy-certificate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*
