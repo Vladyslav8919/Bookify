@@ -990,6 +990,73 @@ Gift Certificates
 }
 
 /*
+-----------
+COUNTDOWN
+-----------
+*/
+.image--gift {
+  width: 100%;
+  margin: 0 auto;
+  /* margin-bottom: 2rem; */
+  border-radius: var(--radius);
+}
+.giweaway-img {
+  margin-bottom: 2rem;
+}
+.giweaway-info h3 {
+  /* text-transform: uppercase; */
+  color: var(--clr-primary-6);
+}
+.giweaway-info p {
+  color: var(--clr-grey-6);
+}
+.date {
+  color: var(--clr-grey-5);
+  font-size: 0.85rem;
+}
+@media screen and (min-width: 992px) {
+  /* .section-center {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 3rem;
+    width: 95vw;
+  } */
+  /* .giweaway-img {
+    margin-bottom: 0;
+  } */
+}
+.giweaway-info p {
+  margin: 2rem 0;
+}
+.deadline {
+  display: flex;
+  justify-content: center;
+}
+.deadline-format {
+  background: var(--clr-primary-8);
+  border-radius: var(--radius);
+  color: var(--clr-white);
+  margin-right: 1rem;
+  width: 5rem;
+  height: 5rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.deadline-format span {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+}
+.deadline h4:not(.expired) {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: var(--spacing);
+}
+
+/*
 -------------
 Footer
 -------------
