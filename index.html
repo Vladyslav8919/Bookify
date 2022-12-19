@@ -47,10 +47,8 @@
           <li><a class="scroll-link" href="#bestsellers">Bestsellers</a></li>
           <li><a class="scroll-link" href="#questions">Questions</a></li>
           <li><a class="scroll-link" href="#reviews">Reviews</a></li>
-          <!-- <li><a href="">Gifts</a></li> -->
-          <!-- <li><a href="">Bargain Bin</a></li> -->
+          <li><a id="wishlist" href="">Wishlist</a></li>
           <li><a class="scroll-link" href="#gifts">Gifts</a></li>
-          <li><a href="">Cart</a></li>
           <li><a id="log-in" href="">Log In</a></li>
         </ul>
       </div>
@@ -442,6 +440,27 @@
         </div>
       </section>
 
+      <!-- Wishlist -->
+      <section class="container wishlist hidden">
+        <h3 class="heading--log-in">Your wishlist</h3>
+        <button class="close-btn close-wishlist-modal">✕</button>
+
+        
+      <form class="wishlist-form">
+        <p class="alert"></p>
+        <div class="form-control">
+          <input type="text" id="input--wishlist" placeholder="e.g. 'All The Colors Of Christmas'" />
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </form>
+      <div class="wishlist-container">
+        <div class="wishlist-list"></div>
+        <button type="button" class="clear-btn">Clear items</button>
+      </div>
+    
+        
+      </section>
+
       <!-- Modal -->
       <section class="container modal hidden">
         <h3 class="heading--log-in">Log in</h3>
@@ -465,7 +484,9 @@
           </p>
         </form>
       </section>
+
       <hr />
+
       <!-- Reviews -->
       <section id="reviews" class="container">
         <!-- title -->

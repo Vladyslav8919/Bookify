@@ -339,13 +339,220 @@ questionBtns.forEach(function (btn) {
 
 /*
 -----------
+Cart
+-----------
+*/
+// *Modal*
+const overlay = document.querySelector(".overlay");
+const openWishlistModalBtn = document.getElementById("wishlist");
+const closeWishlistModalBtn = document.querySelector(".close-wishlist-modal");
+const wishlistModal = document.querySelector(".wishlist");
+
+openWishlistModalBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  wishlistModal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+});
+closeWishlistModalBtn.addEventListener("click", function () {
+  wishlistModal.classList.add("hidden");
+  overlay.classList.add("hidden");
+});
+
+// *Wishlist*
+const alert = document.querySelector(".alert");
+const form = document.querySelector(".wishlist-form");
+const wishlist = document.getElementById("wishlist");
+const submitBtn = document.querySelector(".submit-btn");
+const container = document.querySelector(".wishlist-container");
+const list = document.querySelector(".wishlist-list");
+const clearBtn = document.querySelector(".clear-btn");
+const wishlistInput = document.getElementById("input--wishlist");
+
+let editElement;
+let editFlag = false;
+let editId = "";
+
+// ***Functions***
+const addItem = function (e) {
+  e.preventDefault();
+
+  const value = wishlistInput.value;
+  const id = new Date().getTime().toString();
+
+  if (value !== "" && !editFlag) {
+    // add list item
+    createListItem(id, value);
+
+    displayAlert("Item added to the list", "success");
+
+    container.classList.add("show-container");
+
+    addToLocalStorage(id, value);
+
+    setBackToDefault();
+  } else if (value !== "" && editFlag) {
+    editElement.textContent = value;
+    displayAlert("Value changed", "success");
+
+    // *Edit local storage
+    editLocalStorage(editId, value);
+    setBackToDefault();
+  } else {
+    displayAlert("Please enter value", "danger");
+  }
+};
+
+const displayAlert = function (message, action) {
+  alert.textContent = message;
+  alert.classList.add(`alert-${action}`);
+
+  setTimeout(function () {
+    alert.textContent = "";
+    alert.classList.remove(`alert-${action}`);
+  }, 1000);
+};
+
+const setBackToDefault = function () {
+  wishlistInput.value = "";
+  editFlag = false;
+  editId = "";
+  submitBtn.textContent = "Submit";
+};
+
+const deleteItem = function (e) {
+  const element = e.currentTarget.closest(".wishlist-item");
+  const id = element.dataset.id;
+
+  list.removeChild(element);
+
+  if (list.children.length === 0) {
+    container.classList.remove("show-container");
+  }
+
+  displayAlert("Item removed", "danger");
+
+  setBackToDefault();
+
+  removeFromLocalStorage(id);
+};
+
+const editItem = function (e) {
+  const element = e.currentTarget.closest(".wishlist-item");
+
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+
+  wishlistInput.value = editElement.textContent;
+  editFlag = true;
+  editId = element.dataset.id;
+
+  submitBtn.textContent = "Edit";
+};
+
+const clearItems = function () {
+  list.innerHTML = "";
+
+  container.classList.remove("show-container");
+  displayAlert("Empty list", "danger");
+
+  setBackToDefault();
+
+  localStorage.removeItem("list");
+};
+
+const setupItems = function () {
+  let items = getLocalStorage();
+
+  if (items.length > 0) {
+    items.forEach((item) => {
+      createListItem(item.id, item.value);
+    });
+    container.classList.add("show-container");
+  }
+};
+
+// ***Event listeners***
+form.addEventListener("submit", addItem);
+clearBtn.addEventListener("click", clearItems);
+window.addEventListener("DOMContentLoaded", setupItems);
+
+// ***Local Storage***
+const getLocalStorage = function () {
+  return localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+};
+
+const addToLocalStorage = function (id, value) {
+  const item = { id, value };
+  let items = getLocalStorage();
+  items.push(item);
+  console.log(items);
+  localStorage.setItem("list", JSON.stringify(items));
+};
+
+const removeFromLocalStorage = function (id) {
+  let items = getLocalStorage();
+
+  console.log(items);
+  items = items.filter((item) => {
+    if (item.id !== id) return item;
+  });
+
+  localStorage.setItem("list", JSON.stringify(items));
+};
+
+const editLocalStorage = function (id, value) {
+  const items = getLocalStorage();
+
+  items.forEach((item) => {
+    if (item.id === id) {
+      item.value = value;
+    }
+    return item;
+  });
+  localStorage.setItem("list", JSON.stringify(items));
+};
+
+// ***Setup items******
+
+const createListItem = function (id, value) {
+  const element = document.createElement("article");
+  let attr = document.createAttribute("data-id");
+  attr.value = id;
+
+  element.setAttributeNode(attr);
+  element.classList.add("wishlist-item");
+  element.innerHTML = `<p class="title">${value}</p>
+            <div class="btn-container">
+              <!-- edit btn -->
+              <button type="button" class="edit-btn">
+                <i class="fas fa-edit"></i>
+              </button>
+              <!-- delete btn -->
+              <button type="button" class="delete-btn">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          `;
+
+  // add event listeners to both buttons;
+  const deleteBtn = element.querySelector(".delete-btn");
+  deleteBtn.addEventListener("click", deleteItem);
+  const editBtn = element.querySelector(".edit-btn");
+  editBtn.addEventListener("click", editItem);
+
+  list.appendChild(element);
+};
+
+/*
+-----------
 MODAL
 -----------
 */
 const btnOpenModal = document.getElementById("log-in");
 const btnCloseModal = document.querySelector(".close-modal");
 const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
 
 btnOpenModal.addEventListener("click", function (e) {
   e.preventDefault();
@@ -361,6 +568,7 @@ const closeModal = function () {
 
 overlay.addEventListener("click", function () {
   closeModal();
+  wishlistModal.classList.add("hidden");
 });
 
 btnCloseModal.addEventListener("click", function () {
