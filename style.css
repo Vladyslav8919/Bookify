@@ -127,7 +127,7 @@ section:not(.modal, .wishlist) {
 }
 
 .section-center {
-  width: 90vw;
+  width: 85vw;
   margin: 0 auto;
   max-width: 1170px;
 }
@@ -326,7 +326,7 @@ Sidebar
   color: var(--clr-grey-2);
   transition: var(--transition);
   cursor: pointer;
-
+  margin: 0 0.5rem;
   padding: 0.85rem;
   background-color: var(--clr-primary-1);
   border-radius: 50rem;
@@ -1106,6 +1106,11 @@ Footer
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  .section-center {
+    width: 75vw;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .sidebar {
     min-width: 400px;
   }
@@ -1139,7 +1144,7 @@ Footer
   }
 
   .section-center {
-    width: 95vw;
+    width: 90vw;
     grid-template-columns: repeat(3, 1fr);
   }
   .photo {
@@ -1150,7 +1155,8 @@ Footer
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width: 992px) {
   .section-center {
-    width: 95vw;
+    width: 85vw;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .nav-center {
@@ -1193,7 +1199,7 @@ Footer
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1220px) {
   .section-center {
-    width: 95vw;
+    width: 75vw;
     grid-template-columns: repeat(5, 1fr);
   }
   .photo {
@@ -1211,7 +1217,7 @@ Footer
   }
 
   .nav-search--input {
-    width: 14rem;
+    width: 12rem;
   }
   .nav-toggle {
     display: none;
