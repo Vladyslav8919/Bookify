@@ -19,6 +19,25 @@ btnToggleNav.addEventListener("click", function () {
   }
 });
 
+// ******NAV SEARCH********
+const categoryTitle = document.querySelector(".category-title");
+
+let query = "christmas";
+let page = 0;
+
+const navSearchForm = document.querySelector(".nav-search--form");
+const navSearchInput = document.querySelector(".nav-search--input");
+
+navSearchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  categoryTitle.textContent = `Search Results for '${navSearchInput.value}'`;
+
+  query = navSearchInput.value;
+
+  getData(query, page);
+});
+
 // const navLinks = document.querySelector(".nav-links");
 
 // btnToggleNav.addEventListener("click", function () {
@@ -104,6 +123,24 @@ btnCloseSidebar.addEventListener("click", function () {
   sidebar.classList.remove("show-sidebar");
 });
 
+const sidebarLinksContainer = document.querySelector(".sidebar-links");
+// const sidebarResultsContainer = document.querySelector(".section--assortment");
+
+sidebarLinksContainer.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const link = e.target;
+
+  categoryTitle.textContent = link.textContent;
+
+  // categoryTitle.textContent =
+
+  query = link.dataset.category;
+
+  getData(query, page);
+  // console.log(link.dataset.category);
+});
+
 /*
 -----------
 ASSORTMENT
@@ -113,11 +150,11 @@ const spinner = document.querySelector(".spinner");
 
 let assortment;
 
-const getData = async function (startIndex) {
+const getData = async function (query, startIndex) {
   spinner.classList.remove("hidden");
   try {
     const response = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=christmas&startIndex=${startIndex}&maxResults=10`
+      `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=10`
     );
     const data = await response.json();
     const { items } = data;
@@ -134,8 +171,7 @@ const getData = async function (startIndex) {
   spinner.classList.add("hidden");
 };
 
-let page = 0;
-getData(page);
+getData(query, page);
 
 const prevBtn = document.querySelector(".prevBtn");
 prevBtn.addEventListener("click", function () {
@@ -145,13 +181,13 @@ prevBtn.addEventListener("click", function () {
     page = 0;
     prevBtn.classList.remove("show-prevBtn");
   }
-  getData(page);
+  getData(query, page);
 });
 
 const nextBtn = document.querySelector(".nextBtn");
 nextBtn.addEventListener("click", function () {
   page += 10;
-  getData(page);
+  getData(query, page);
   prevBtn.classList.add("show-prevBtn");
 });
 
