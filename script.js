@@ -113,18 +113,18 @@ const spinner = document.querySelector(".spinner");
 
 let assortment;
 
-const getData = async function () {
+const getData = async function (startIndex) {
   spinner.classList.remove("hidden");
   try {
     const response = await fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=christmas"
+      `https://www.googleapis.com/books/v1/volumes?q=christmas&startIndex=${startIndex}&maxResults=10`
     );
     const data = await response.json();
     const { items } = data;
     // console.log(data);
     // console.log(items);
     assortment = items;
-    // console.log(assortment);
+    console.log(assortment);
     displayAssortmentItems(assortment);
 
     // displayAssortmentBtns();
@@ -133,7 +133,27 @@ const getData = async function () {
   }
   spinner.classList.add("hidden");
 };
-getData();
+
+let page = 0;
+getData(page);
+
+const prevBtn = document.querySelector(".prevBtn");
+prevBtn.addEventListener("click", function () {
+  if (page > 10) {
+    page -= 10;
+  } else {
+    page = 0;
+    prevBtn.classList.remove("show-prevBtn");
+  }
+  getData(page);
+});
+
+const nextBtn = document.querySelector(".nextBtn");
+nextBtn.addEventListener("click", function () {
+  page += 10;
+  getData(page);
+  prevBtn.classList.add("show-prevBtn");
+});
 
 const sectionAssortment = document.querySelector(".section--assortment");
 const btnContainerAssortment = document.querySelector(
@@ -166,40 +186,40 @@ const displayAssortmentItems = function (assortment) {
 /* <p class="item-text">${item.volumeInfo.description}</p>; */
 /* <h4 class="price">${item.volumeInfo.pageCount}</h4>; */
 
-const displayAssortmentBtns = function () {
-  const categories = [...new Set(assortment.map((item) => item.category))];
-  categories.unshift("all");
+// const displayAssortmentBtns = function () {
+//   const categories = [...new Set(assortment.map((item) => item.category))];
+//   categories.unshift("all");
 
-  const categoryBtns = categories
-    .map(
-      (category) =>
-        `<button class="btn filter-btn" type="button"  data-id="${category}">${category}</button>`
-    )
-    .join("");
+//   const categoryBtns = categories
+//     .map(
+//       (category) =>
+//         `<button class="btn filter-btn" type="button"  data-id="${category}">${category}</button>`
+//     )
+//     .join("");
 
-  btnContainerAssortment.innerHTML = categoryBtns;
+//   btnContainerAssortment.innerHTML = categoryBtns;
 
-  // filter items
-  const filterBtns = btnContainerAssortment.querySelectorAll(".filter-btn");
+// filter items
+//   const filterBtns = btnContainerAssortment.querySelectorAll(".filter-btn");
 
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-      const category = e.currentTarget.dataset.id;
+//   filterBtns.forEach(function (btn) {
+//     btn.addEventListener("click", function (e) {
+//       const category = e.currentTarget.dataset.id;
 
-      const assortmentCategory = assortment.filter(function (assortmentItem) {
-        if (assortmentItem.category === category) {
-          return assortmentItem;
-        }
-      });
+//       const assortmentCategory = assortment.filter(function (assortmentItem) {
+//         if (assortmentItem.category === category) {
+//           return assortmentItem;
+//         }
+//       });
 
-      if (category === "all") {
-        displayAssortmentItems(assortment);
-      } else {
-        displayAssortmentItems(assortmentCategory);
-      }
-    });
-  });
-};
+//       if (category === "all") {
+//         displayAssortmentItems(assortment);
+//       } else {
+//         displayAssortmentItems(assortmentCategory);
+//       }
+//     });
+//   });
+// };
 
 /*
 --------------------------------

@@ -471,11 +471,17 @@ Assortment
 -----------------
 */
 /* .assortment {
+  background-color: var(--clr-white);
+  border-radius: var(--radius);
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 } */
 
 .assortment .title {
   text-align: center;
-  /* margin-bottom: 3rem; */
+  margin-top: 3rem;
 } /*????*/
 
 /* .assortment .btn {
@@ -497,11 +503,38 @@ Assortment
   background: var(--clr-black);
 } */
 
-/* .btn-container {
-  margin-bottom: 4rem;
+.btn-container--assortment {
   display: flex;
   justify-content: center;
-} */
+  margin-top: 0.75rem;
+}
+
+.prevBtn,
+.nextBtn {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  /* border: 3px solid var(--clr-white); */
+  box-shadow: var(--light-shadow);
+  background-color: var(--clr-white);
+  /* color: var(--clr-primary-8); */
+}
+
+.prevBtn:hover,
+.nextBtn:hover {
+  background-color: var(--clr-white);
+  color: var(--clr-primary-9);
+  box-shadow: var(--dark-shadow);
+}
+
+.prevBtn {
+  display: none;
+  margin-right: 0.25rem;
+}
+
+.show-prevBtn {
+  display: inline-block;
+}
+
 .filter-btn {
   background: var(--clr-primary-2);
   /* border-color: var(--clr-white); */
@@ -526,22 +559,35 @@ Assortment
   margin: 0 auto;
   max-width: 1170px;
   display: grid;
-  gap: 3rem 2rem;
+  gap: 1rem 1rem;
   justify-items: center;
+  padding: 4rem 3rem;
+  background-color: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+  /* transition: var(--transition); */
 }
+
+/* .assortment .section-center:hover {
+  box-shadow: var(--dark-shadow);
+} */
 
 .assortment-item {
   display: grid;
-  gap: 1rem 2rem;
+  gap: 1rem;
   max-width: 25rem;
   justify-items: center;
+  /* border: 4px dotted var(--clr-primary-1); */
+  /* background-color: var(--clr-primary-1); */
+  border-radius: var(--radius);
 }
 
 .photo {
   object-fit: cover;
   height: 200px;
-  border: 0.45rem solid var(--clr-white);
-  border-radius: 0.7rem;
+  border: 0.45rem solid var(--clr-primary-1);
+  border-radius: 2rem;
+  box-shadow: var(--light-shadow);
 }
 .item-info header {
   display: flex;
