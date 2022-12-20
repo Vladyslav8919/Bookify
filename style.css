@@ -33,9 +33,9 @@
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 /* Global styles */
-/* html {
+html {
   scroll-behavior: smooth;
-} */
+}
 *,
 ::after,
 ::before {
@@ -101,7 +101,6 @@ hr {
 }
 
 .btn {
-  /* margin-top: 0.5rem; */
   background: var(--clr-primary-2);
   color: var(--clr-grey-4);
   padding: 0.5rem 0.5rem;
@@ -216,16 +215,6 @@ nav .links a:hover {
 nav .social-icons {
   display: none;
 }
-/* nav .links {
-  height: 0;
-  overflow: hidden;
-  transition: var(--transition);
-  display: none;
-}
-nav .show-links {
-  height: 13rem;
-  display: block;
-} */
 .links-container {
   height: 0;
   overflow: hidden;
@@ -249,9 +238,6 @@ nav .show-links {
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
 }
-/* .fixed-nav .links-container {
-  height: auto !important;
-} */
 
 /*
 -------------
@@ -400,10 +386,8 @@ Assortment
 .nextBtn {
   padding: 0.5rem 1rem;
   text-align: center;
-  /* border: 3px solid var(--clr-white); */
   box-shadow: var(--light-shadow);
   background-color: var(--clr-white);
-  /* color: var(--clr-primary-8); */
 }
 
 .prevBtn:hover,
@@ -442,9 +426,7 @@ Assortment
 }
 
 .assortment .section-center {
-  /* width: 90vw; */
   margin: 0 auto;
-  /* max-width: 1170px; */
   display: grid;
   gap: 1rem;
   justify-items: center;
@@ -452,7 +434,6 @@ Assortment
   background-color: var(--clr-white);
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
-  /* transition: var(--transition); */
 }
 
 .assortment-item {
@@ -460,8 +441,6 @@ Assortment
   gap: 1rem;
   max-width: 25rem;
   justify-items: center;
-  /* border: 4px dotted var(--clr-primary-1); */
-  /* background-color: var(--clr-primary-1); */
   border-radius: var(--radius);
 }
 
@@ -475,9 +454,7 @@ Assortment
 .item-info header {
   display: flex;
   justify-content: space-between;
-  /* border-bottom: 0.5px solid var(--clr-grey-5); */
   border: none;
-  /* border-bottom: 1px solid var(--clr-grey-9); */
 }
 
 .item-info h4 {
@@ -532,7 +509,6 @@ Questions
 }
 .question-title p {
   margin-bottom: 0;
-  /* letter-spacing: var(--spacing); */
   color: var(--clr-grey-1);
 }
 .question-btn {
@@ -585,10 +561,6 @@ Modal
   background-color: var(--clr-white);
   border-radius: var(--radius);
   padding: 2rem;
-  /* position: absolute; */
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -683,10 +655,6 @@ Reviews
   margin-left: auto;
   margin-right: auto;
 }
-
-/* .container {
-  max-width: 80vw;
-} */
 
 .review {
   background: var(--clr-white);
@@ -787,7 +755,6 @@ Reviews
   position: fixed;
   top: 43%;
   left: 45.5%;
-  /* transform: translate(-50%, -50%); */
   border-radius: 100%;
   -webkit-animation: sk-scaleout 1s infinite ease-in-out;
   animation: sk-scaleout 1s infinite ease-in-out;
@@ -823,8 +790,6 @@ Gift Certificates
 .about {
   background: var(--clr-white);
   border-radius: var(--radius);
-  /* display: grid; */
-  /* grid-template-rows: auto 1fr; */
 }
 .btn-container--gift {
   border-top-left-radius: var(--radius);
@@ -840,7 +805,6 @@ Gift Certificates
 }
 .tab-btn {
   padding: 1rem 0;
-  /* margin: 0 -1px; */
   border: none;
   text-transform: capitalize;
   font-size: 1rem;
@@ -849,12 +813,10 @@ Gift Certificates
   background: var(--clr-primary-1);
   cursor: pointer;
   transition: var(--transition);
-  /* letter-spacing: var(--spacing); */
   box-shadow: inset 0 0 0 1px #fff;
 }
 .tab-btn:hover:not(.active) {
   background: var(--clr-primary-2);
-  /* color: var(--clr-primary-9); */
 }
 .about-content {
   border-bottom-left-radius: var(--radius);
@@ -873,9 +835,6 @@ Gift Certificates
   display: block;
 }
 
-/* #gifts .title {
-  margin-top: 12vh;
-} */
 
 #bookId {
   background-color: var(--clr-primary-1);
@@ -883,7 +842,6 @@ Gift Certificates
   border: none;
   padding: 0.55rem;
   text-align: center;
-  /* display: block; */
   margin: 0 0.2rem 0 0.5rem;
 
   text-align: center;
@@ -904,14 +862,12 @@ COUNTDOWN
 .image--gift {
   width: 100%;
   margin: 0 auto;
-  /* margin-bottom: 2rem; */
   border-radius: var(--radius);
 }
 .giweaway-img {
   margin-bottom: 2rem;
 }
 .giweaway-info h3 {
-  /* text-transform: uppercase; */
   color: var(--clr-primary-6);
 }
 .giweaway-info p {
@@ -1009,7 +965,6 @@ Wishlist
   align-items: center;
   padding: 0.25rem;
   text-transform: capitalize;
-  /* letter-spacing: 1px; */
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   cursor: pointer;
@@ -1217,7 +1172,7 @@ Footer
   }
 
   .nav-search--input {
-    width: 12rem;
+    width: 13rem;
   }
   .nav-toggle {
     display: none;
@@ -1240,8 +1195,4 @@ Footer
   nav .social-icons {
     display: flex;
   }
-}
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
 }

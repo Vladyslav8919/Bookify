@@ -38,19 +38,11 @@ navSearchForm.addEventListener("submit", function (e) {
   getData(query, page);
 });
 
-// const navLinks = document.querySelector(".nav-links");
-
-// btnToggleNav.addEventListener("click", function () {
-//   console.log(navLinks.classList);
-//   navLinks.classList.toggle("show-links");
-// });
-
 /* Fixed navbar */
 const navbar = document.getElementById("nav");
 const topLink = document.querySelector(".top-link");
 
 const newSection = document.getElementById("bestsellers");
-// const sectionCoords = Math.abs(newSection.offsetTop + newSection.offsetHeight);
 const sectionCoords = Math.abs(newSection.offsetTop + newSection.offsetHeight);
 
 window.addEventListener("scroll", function () {
@@ -79,6 +71,7 @@ const scrollLinks = document.querySelectorAll(".scroll-link");
 scrollLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
     e.preventDefault();
+    console.log(e.target);
 
     const id = e.currentTarget.getAttribute("href").slice(1);
 
@@ -86,10 +79,13 @@ scrollLinks.forEach(function (link) {
 
     // calculate the heights
     const navHeight = navbar.getBoundingClientRect().height;
+    console.log("nav height: ", navHeight);
     const containerHeight = navLinksContainer.getBoundingClientRect().height;
+    console.log("container height: ", containerHeight);
     const fixedNav = navbar.classList.contains("fixed-nav");
 
     let position = element.offsetTop;
+    console.log(position);
 
     position = position - navHeight;
 
@@ -124,7 +120,7 @@ btnCloseSidebar.addEventListener("click", function () {
 });
 
 const sidebarLinksContainer = document.querySelector(".sidebar-links");
-// const sidebarResultsContainer = document.querySelector(".section--assortment");
+const sidebarResultsContainer = document.querySelector(".section--assortment");
 
 sidebarLinksContainer.addEventListener("click", function (e) {
   e.preventDefault();
@@ -133,12 +129,9 @@ sidebarLinksContainer.addEventListener("click", function (e) {
 
   categoryTitle.textContent = link.textContent;
 
-  // categoryTitle.textContent =
-
   query = link.dataset.category;
 
   getData(query, page);
-  // console.log(link.dataset.category);
 });
 
 /*
@@ -158,13 +151,9 @@ const getData = async function (query, startIndex) {
     );
     const data = await response.json();
     const { items } = data;
-    // console.log(data);
-    // console.log(items);
     assortment = items;
     console.log(assortment);
     displayAssortmentItems(assortment);
-
-    // displayAssortmentBtns();
   } catch (err) {
     console.log(err);
   }
@@ -196,12 +185,6 @@ const btnContainerAssortment = document.querySelector(
   ".btn-container--assortment"
 );
 
-// window.addEventListener("DOMContentLoaded", function () {
-//   displayAssortmentItems(assortment);
-
-//   displayAssortmentBtns();
-// });
-
 const displayAssortmentItems = function (assortment) {
   const displayItems = assortment
     .map(function (item) {
@@ -219,43 +202,6 @@ const displayAssortmentItems = function (assortment) {
     .join("");
   sectionAssortment.innerHTML = displayItems;
 };
-/* <p class="item-text">${item.volumeInfo.description}</p>; */
-/* <h4 class="price">${item.volumeInfo.pageCount}</h4>; */
-
-// const displayAssortmentBtns = function () {
-//   const categories = [...new Set(assortment.map((item) => item.category))];
-//   categories.unshift("all");
-
-//   const categoryBtns = categories
-//     .map(
-//       (category) =>
-//         `<button class="btn filter-btn" type="button"  data-id="${category}">${category}</button>`
-//     )
-//     .join("");
-
-//   btnContainerAssortment.innerHTML = categoryBtns;
-
-// filter items
-//   const filterBtns = btnContainerAssortment.querySelectorAll(".filter-btn");
-
-//   filterBtns.forEach(function (btn) {
-//     btn.addEventListener("click", function (e) {
-//       const category = e.currentTarget.dataset.id;
-
-//       const assortmentCategory = assortment.filter(function (assortmentItem) {
-//         if (assortmentItem.category === category) {
-//           return assortmentItem;
-//         }
-//       });
-
-//       if (category === "all") {
-//         displayAssortmentItems(assortment);
-//       } else {
-//         displayAssortmentItems(assortmentCategory);
-//       }
-//     });
-//   });
-// };
 
 /*
 --------------------------------
@@ -329,7 +275,6 @@ const weekday = weekdays[futureDate.getDay()];
 const day = futureDate.getDate();
 const hours = futureDate.getHours();
 const mins = futureDate.getMinutes();
-// const secs = futureDate.getSeconds();
 
 giveawayDeadline.textContent = `Giveaway ends on ${weekday} ${day} ${month} ${year} ${hours}:${mins}`;
 
@@ -673,10 +618,6 @@ const author = document.getElementById("author");
 const job = document.getElementById("job");
 const info = document.getElementById("info");
 
-// const prevBtn = document.querySelector(".prev-btn");
-// const nextBtn = document.querySelector(".next-btn");
-// const randomBtn = document.querySelector(".random-btn");
-
 // Test
 const btnContainer = document.querySelector(".button-container");
 
@@ -686,7 +627,6 @@ btnContainer.addEventListener("click", function (e) {
   const btn = e.target.closest(".btn");
 
   if (!btn) return;
-  // console.log(btn);
 
   if (btn.classList.contains("prev-btn")) {
     currentReview--;
@@ -720,32 +660,6 @@ const showReview = function (review) {
 window.addEventListener("DOMContentLoaded", function () {
   showReview(reviews[currentReview]);
 });
-
-// prevBtn.addEventListener("click", function () {
-//   currentReview--;
-
-//   if (currentReview < 0) {
-//     currentReview = reviews.length - 1;
-//   }
-
-//   showReview(reviews[currentReview]);
-// });
-
-// nextBtn.addEventListener("click", function () {
-//   currentReview++;
-
-//   if (currentReview > reviews.length - 1) {
-//     currentReview = 0;
-//   }
-
-//   showReview(reviews[currentReview]);
-// });
-
-// randomBtn.addEventListener("click", function () {
-//   const randomReview = Math.floor(Math.random() * reviews.length);
-
-//   showReview(reviews[randomReview]);
-// });
 
 /*
 -----------
