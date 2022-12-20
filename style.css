@@ -436,7 +436,6 @@ Assortment
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
 }
-
 .assortment-item {
   display: grid;
   gap: 1rem;
@@ -452,12 +451,12 @@ Assortment
   border-radius: 2rem;
   box-shadow: var(--light-shadow);
 }
+
 .item-info header {
   display: flex;
   justify-content: space-between;
   border: none;
 }
-
 .item-info h4 {
   text-align: center;
   line-height: 1.3rem;
@@ -466,11 +465,9 @@ Assortment
   color: var(--clr-grey-2);
   cursor: pointer;
 }
-
 .item-info a:hover {
   color: var(--clr-primary-9);
 }
-
 .item-info h4 {
   margin-bottom: 0.5rem;
 }
