@@ -60,7 +60,6 @@ const date = document.getElementById("date");
 NAVBAR
 ----------------
 */
-
 btnToggleNav.addEventListener("click", function () {
   const navLinksHeight = navLinks.getBoundingClientRect().height;
   const navLinksContainerHeight =
@@ -74,7 +73,6 @@ btnToggleNav.addEventListener("click", function () {
 });
 
 /* Nav search */
-
 let query = "christmas";
 let page = 0;
 
