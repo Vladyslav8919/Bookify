@@ -1,11 +1,65 @@
+const btnToggleNav = document.querySelector(".nav-toggle");
+const navLinksContainer = document.querySelector(".links-container");
+const navLinks = document.querySelector(".nav-links");
+const navbar = document.getElementById("nav");
+const topLink = document.querySelector(".top-link");
+
+const newSection = document.getElementById("bestsellers");
+const navSearchForm = document.querySelector(".nav-search--form");
+const navSearchInput = document.querySelector(".nav-search--input");
+const categoryTitle = document.querySelector(".category-title");
+
+const scrollLinks = document.querySelectorAll(".scroll-link");
+const sidebar = document.querySelector(".sidebar");
+const btnToggleSidebar = document.querySelector(".sidebar-toggle");
+const btnCloseSidebar = document.querySelector(".close-sidebar");
+const sidebarLinksContainer = document.querySelector(".sidebar-links");
+const sidebarResultsContainer = document.querySelector(".section--assortment");
+
+const spinner = document.querySelector(".spinner");
+const prevBtn = document.querySelector(".prevBtn");
+const nextBtn = document.querySelector(".nextBtn");
+const sectionAssortment = document.querySelector(".section--assortment");
+
+const giftArticle = document.querySelector(".about");
+const giftBtns = document.querySelectorAll(".tab-btn");
+const giftContents = document.querySelectorAll(".content");
+const giveawayDeadline = document.querySelector(".giveaway-deadline");
+const deadline = document.querySelector(".deadline");
+const items = document.querySelectorAll(".deadline-format h4");
+
+const questionBtns = document.querySelectorAll(".question-btn");
+const questions = document.querySelectorAll(".question");
+const overlay = document.querySelector(".overlay");
+
+const openWishlistModalBtn = document.getElementById("wishlist");
+const closeWishlistModalBtn = document.querySelector(".close-wishlist-modal");
+const wishlistModal = document.querySelector(".wishlist");
+const alert = document.querySelector(".alert");
+const form = document.querySelector(".wishlist-form");
+const wishlist = document.getElementById("wishlist");
+const submitBtn = document.querySelector(".submit-btn");
+const container = document.querySelector(".wishlist-container");
+const list = document.querySelector(".wishlist-list");
+const clearBtn = document.querySelector(".clear-btn");
+const wishlistInput = document.getElementById("input--wishlist");
+
+const btnOpenModal = document.getElementById("log-in");
+const btnCloseModal = document.querySelector(".close-modal");
+const modal = document.querySelector(".modal");
+
+const img = document.getElementById("person-img");
+const author = document.getElementById("author");
+const job = document.getElementById("job");
+const info = document.getElementById("info");
+const btnContainer = document.querySelector(".button-container");
+const date = document.getElementById("date");
+
 /* 
 ----------------
 NAVBAR
 ----------------
 */
-const btnToggleNav = document.querySelector(".nav-toggle");
-const navLinksContainer = document.querySelector(".links-container");
-const navLinks = document.querySelector(".nav-links");
 
 btnToggleNav.addEventListener("click", function () {
   const navLinksHeight = navLinks.getBoundingClientRect().height;
@@ -19,14 +73,10 @@ btnToggleNav.addEventListener("click", function () {
   }
 });
 
-// ******NAV SEARCH********
-const categoryTitle = document.querySelector(".category-title");
+/* Nav search */
 
 let query = "christmas";
 let page = 0;
-
-const navSearchForm = document.querySelector(".nav-search--form");
-const navSearchInput = document.querySelector(".nav-search--input");
 
 navSearchForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -39,10 +89,6 @@ navSearchForm.addEventListener("submit", function (e) {
 });
 
 /* Fixed navbar */
-const navbar = document.getElementById("nav");
-const topLink = document.querySelector(".top-link");
-
-const newSection = document.getElementById("bestsellers");
 const sectionCoords = Math.abs(newSection.offsetTop + newSection.offsetHeight);
 
 window.addEventListener("scroll", function () {
@@ -66,12 +112,10 @@ window.addEventListener("scroll", function () {
 SMOOTH SCROLL
 -----------
 */
-const scrollLinks = document.querySelectorAll(".scroll-link");
 
 scrollLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
     e.preventDefault();
-    console.log(e.target);
 
     const id = e.currentTarget.getAttribute("href").slice(1);
 
@@ -79,13 +123,10 @@ scrollLinks.forEach(function (link) {
 
     // calculate the heights
     const navHeight = navbar.getBoundingClientRect().height;
-    console.log("nav height: ", navHeight);
     const containerHeight = navLinksContainer.getBoundingClientRect().height;
-    console.log("container height: ", containerHeight);
     const fixedNav = navbar.classList.contains("fixed-nav");
 
     let position = element.offsetTop;
-    console.log(position);
 
     position = position - navHeight;
 
@@ -107,9 +148,6 @@ scrollLinks.forEach(function (link) {
 SIDEBAR
 -----------
 */
-const sidebar = document.querySelector(".sidebar");
-const btnToggleSidebar = document.querySelector(".sidebar-toggle");
-const btnCloseSidebar = document.querySelector(".close-sidebar");
 
 btnToggleSidebar.addEventListener("click", function () {
   sidebar.classList.toggle("show-sidebar");
@@ -118,9 +156,6 @@ btnToggleSidebar.addEventListener("click", function () {
 btnCloseSidebar.addEventListener("click", function () {
   sidebar.classList.remove("show-sidebar");
 });
-
-const sidebarLinksContainer = document.querySelector(".sidebar-links");
-const sidebarResultsContainer = document.querySelector(".section--assortment");
 
 sidebarLinksContainer.addEventListener("click", function (e) {
   e.preventDefault();
@@ -139,7 +174,6 @@ sidebarLinksContainer.addEventListener("click", function (e) {
 ASSORTMENT
 -----------
 */
-const spinner = document.querySelector(".spinner");
 
 let assortment;
 
@@ -152,7 +186,6 @@ const getData = async function (query, startIndex) {
     const data = await response.json();
     const { items } = data;
     assortment = items;
-    console.log(assortment);
     displayAssortmentItems(assortment);
   } catch (err) {
     console.log(err);
@@ -162,7 +195,6 @@ const getData = async function (query, startIndex) {
 
 getData(query, page);
 
-const prevBtn = document.querySelector(".prevBtn");
 prevBtn.addEventListener("click", function () {
   if (page > 10) {
     page -= 10;
@@ -173,14 +205,12 @@ prevBtn.addEventListener("click", function () {
   getData(query, page);
 });
 
-const nextBtn = document.querySelector(".nextBtn");
 nextBtn.addEventListener("click", function () {
   page += 10;
   getData(query, page);
   prevBtn.classList.add("show-prevBtn");
 });
 
-const sectionAssortment = document.querySelector(".section--assortment");
 const btnContainerAssortment = document.querySelector(
   ".btn-container--assortment"
 );
@@ -204,13 +234,10 @@ const displayAssortmentItems = function (assortment) {
 };
 
 /*
---------------------------------
+-------------------------
 GIFT *TAB COMPONENT*
---------------------------------
+-------------------------
 */
-const giftArticle = document.querySelector(".about");
-const giftBtns = document.querySelectorAll(".tab-btn");
-const giftContents = document.querySelectorAll(".content");
 
 giftArticle.addEventListener("click", function (e) {
   const id = e.target.dataset.id;
@@ -257,10 +284,6 @@ const weekdays = [
   "Saturday",
   "Sunday",
 ];
-
-const giveawayDeadline = document.querySelector(".giveaway-deadline");
-const deadline = document.querySelector(".deadline");
-const items = document.querySelectorAll(".deadline-format h4");
 
 let tempDate = new Date();
 let tempYear = tempDate.getFullYear();
@@ -321,8 +344,6 @@ getRemainingTime();
 QUESTIONS
 -----------
 */
-const questionBtns = document.querySelectorAll(".question-btn");
-const questions = document.querySelectorAll(".question");
 
 questionBtns.forEach(function (btn) {
   btn.addEventListener("click", function (e) {
@@ -340,15 +361,10 @@ questionBtns.forEach(function (btn) {
 
 /*
 -----------
-Cart
+Wishlist
 -----------
 */
 // *Modal*
-const overlay = document.querySelector(".overlay");
-const openWishlistModalBtn = document.getElementById("wishlist");
-const closeWishlistModalBtn = document.querySelector(".close-wishlist-modal");
-const wishlistModal = document.querySelector(".wishlist");
-
 openWishlistModalBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -361,15 +377,6 @@ closeWishlistModalBtn.addEventListener("click", function () {
 });
 
 // *Wishlist*
-const alert = document.querySelector(".alert");
-const form = document.querySelector(".wishlist-form");
-const wishlist = document.getElementById("wishlist");
-const submitBtn = document.querySelector(".submit-btn");
-const container = document.querySelector(".wishlist-container");
-const list = document.querySelector(".wishlist-list");
-const clearBtn = document.querySelector(".clear-btn");
-const wishlistInput = document.getElementById("input--wishlist");
-
 let editElement;
 let editFlag = false;
 let editId = "";
@@ -488,14 +495,12 @@ const addToLocalStorage = function (id, value) {
   const item = { id, value };
   let items = getLocalStorage();
   items.push(item);
-  console.log(items);
   localStorage.setItem("list", JSON.stringify(items));
 };
 
 const removeFromLocalStorage = function (id) {
   let items = getLocalStorage();
 
-  console.log(items);
   items = items.filter((item) => {
     if (item.id !== id) return item;
   });
@@ -551,9 +556,6 @@ const createListItem = function (id, value) {
 MODAL
 -----------
 */
-const btnOpenModal = document.getElementById("log-in");
-const btnCloseModal = document.querySelector(".close-modal");
-const modal = document.querySelector(".modal");
 
 btnOpenModal.addEventListener("click", function (e) {
   e.preventDefault();
@@ -613,13 +615,7 @@ const reviews = [
   },
 ];
 
-const img = document.getElementById("person-img");
-const author = document.getElementById("author");
-const job = document.getElementById("job");
-const info = document.getElementById("info");
-
 // Test
-const btnContainer = document.querySelector(".button-container");
 
 let currentReview = 0;
 
@@ -666,6 +662,5 @@ window.addEventListener("DOMContentLoaded", function () {
 FOOTER
 -----------
 */
-const date = document.getElementById("date");
 
 date.textContent = new Date().getFullYear();

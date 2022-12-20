@@ -116,12 +116,13 @@ hr {
 
 /* Section */
 
-.section {
+.section--footer {
   padding: 5rem 0;
 }
 
 section:not(.modal, .wishlist) {
-  margin-bottom: 3rem;
+  padding: 3rem 0;
+  margin-bottom: 1rem;
   min-height: 100vh;
 }
 
@@ -566,6 +567,7 @@ Modal
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
+  min-width: 45%;
 }
 
 .close-modal,
@@ -835,7 +837,6 @@ Gift Certificates
   display: block;
 }
 
-
 #bookId {
   background-color: var(--clr-primary-1);
   border-radius: 10rem;
@@ -1076,6 +1077,9 @@ Footer
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  .sidebar {
+    max-width: 400px;
+  }
   h1 {
     font-size: 4rem;
   }
