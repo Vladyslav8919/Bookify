@@ -1197,3 +1197,43 @@ Footer
     display: flex;
   }
 }
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  padding: 2.5rem 3rem;
+  background-color: #37383df8;
+}
+
+.footer__nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  margin-top: 1.25rem;
+}
+
+.footer__item {
+  margin-right: 4rem;
+}
+
+.footer__link {
+  font-size: 1rem;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  color: #eee;
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.footer__copyright .footer__link {
+  font-size: 0.8rem;
+}
